@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
@@ -13,13 +13,13 @@ class TaskListView(ListView):
 class TaskCreateView(CreateView):
     model = Task
     fields = "__all__"
-    success_url = reverse_lazy("todo_app:todo-list")
+    success_url = reverse_lazy("todo_app:task-list")
 
 
 class TaskUpdateView(UpdateView):
     model = Task
     fields = "__all__"
-    success_url = reverse_lazy("todo_app:todo-list")
+    success_url = reverse_lazy("todo_app:task-list")
 
 
 class TaskDeleteView(DeleteView):
@@ -47,3 +47,17 @@ class TagUpdateView(UpdateView):
 class TagDeleteView(DeleteView):
     model = Tag
     success_url = reverse_lazy("todo_app:tag-list")
+
+
+def complete_task(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.is_done = True
+    task.save()
+    return redirect("todo_app:task-list")
+
+
+def undo_task(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.is_done = False
+    task.save()
+    return redirect("todo_app:task-list")
