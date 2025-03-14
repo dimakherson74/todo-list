@@ -17,7 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from .models import TodoListView
 
 urlpatterns = [
     path("", TodoListView.as_view(), name="todo-list"),
 ]
+
+app_name = "todo_app"
