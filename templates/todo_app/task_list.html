@@ -6,8 +6,15 @@
       <ul>
       {% for task in task_list %}
         <li>{{ task.content }}</li>
-        <li>Created: {{ task.created_at }}</li>
-        <li>Tags: {{ task.tags.name }}</li>
+        <li>Created: {{ task.created_at|date:"d.m.Y H:i:s" }}</li>
+        <li>Tags:
+          {% for tag in task.tags.all %}
+            {{ tag.name }}
+            {% if not forloop.last %}
+              ,
+            {% endif %}
+          {% endfor %}
+        </li>
       {% endfor %}
       </ul>
     {% endif %}
