@@ -24,6 +24,7 @@ class TaskUpdateView(UpdateView):
 
 class TaskDeleteView(DeleteView):
     model = Task
+    success_url = reverse_lazy("todo_app:task-list")
 
 
 class TagListView(ListView):
@@ -45,3 +46,4 @@ class TagUpdateView(UpdateView):
 
 class TagDeleteView(DeleteView):
     model = Tag
+    success_url = reverse_lazy("todo_app:tag-list")
