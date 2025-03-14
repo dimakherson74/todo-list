@@ -14,13 +14,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from asyncio import TaskGroup
 
 from django.contrib import admin
 from django.urls import path
-from todo_app.views import TodoListView
+from todo_app.views import (
+    TaskListView,
+    TaskDeleteView,
+    TaskCreateView,
+    TaskUpdateView
+)
 
 urlpatterns = [
-    path("", TodoListView.as_view(), name="todo-list"),
+    path("", TaskListView.as_view(), name="task-list"),
+    path("", TaskCreateView.as_view(), name="ttask-create"),
+    path("", TaskUpdateView.as_view(), name="ttask-update"),
+    path("", TaskDeleteView.as_view(), name="ttask-delete"),
+
 ]
 
 app_name = "todo_app"
