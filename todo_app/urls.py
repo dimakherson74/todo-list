@@ -27,9 +27,9 @@ from todo_app.views import (
 
 urlpatterns = [
     path("", TaskListView.as_view(), name="task-list"),
-    path("", TaskCreateView.as_view(), name="ttask-create"),
-    path("", TaskUpdateView.as_view(), name="ttask-update"),
-    path("", TaskDeleteView.as_view(), name="ttask-delete"),
+    path("create/", TaskCreateView.as_view(), name="task-create"),
+    path("update/", TaskUpdateView.as_view(), name="task-update"),
+    path("delete/", TaskDeleteView.as_view(), name="task-delete"),
 
 ]
 
