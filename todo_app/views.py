@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import (
+    ListView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
 
 from todo_app.models import Task, Tag
 
 
 class TaskListView(ListView):
     model = Task
-
 
 
 class TaskCreateView(CreateView):
@@ -29,7 +33,6 @@ class TaskDeleteView(DeleteView):
 
 class TagListView(ListView):
     model = Tag
-
 
 
 class TagCreateView(CreateView):

@@ -41,8 +41,6 @@ urlpatterns = [
     path("tags/<int:pk>/delete/", TagDeleteView.as_view(), name="tag-delete"),
     path('complete/<int:task_id>/', complete_task, name="complete-task"),
     path('undo/<int:task_id>/', undo_task, name="undo-task"),
-
-
 ]
 
 app_name = "todo_app"
